@@ -1,0 +1,15 @@
+# Environment variables
+.env
+
+# Vector database (Chroma)
+chroma_db/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# System files
+.DS_Store
+
+# VS Code
+.vscode/
