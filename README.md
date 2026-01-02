@@ -1,5 +1,9 @@
 📊 TÜİK İstatistik Chatbot
-OpenAI GPT-4o Mini ve RAGAS performans değerlendirmesi ile geliştirilmiş, Türkiye'nin gençlik, aile ve yaşlı istatistiklerine özel RAG (Retrieval-Augmented Generation) tabanlı chatbot.
+
+🎥 Tanıtım Videosu  
+https://www.youtube.com/watch?v=r3HDQdH1b2w
+
+OpenAI GPT-4o Mini ve RAGAS performans değerlendirmesi ile geliştirilmiş, Türkiye'nin gençlik, aile ve yaşlı istatistiklerine özel RAG tabanlı chatbot.
 🎯 Özellikler
 
 Akıllı Döküman Retrieval: Yıl ve kategori bazlı filtreleme ile optimize edilmiş arama
