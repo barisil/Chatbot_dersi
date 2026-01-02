@@ -32,7 +32,7 @@ Python 3.8+
 OpenAI API anahtarı
 
 2. Bağımlılıkların Yüklenmesi
-bashpip install -r requirements.txt
+pip install -r requirements.txt
 
 #### Ana Kütüphaneler
 
@@ -51,7 +51,7 @@ Tam liste için `requirements.txt` dosyasına bakın.
 
 3. Ortam Değişkenlerinin Ayarlanması
 Proje kök dizininde .env dosyası oluşturun:
-envOPENAI_API_KEY=your_openai_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 ### 4. PDF Dokümanların Eklenmesi
@@ -117,7 +117,7 @@ Answer Relevancy: Cevabın soruyla ne kadar ilgili olduğu
 
 ⚙️ Yapılandırma
 pdf_gpt_3.py dosyasındaki sabitler:
-pythonCHUNK_SIZE = 600          # Her chunk'ın karakter boyutu
+CHUNK_SIZE = 600          # Her chunk'ın karakter boyutu
 CHUNK_OVERLAP = 120       # Chunk'lar arası örtüşme
 TOP_K = 4                 # Döndürülecek maksimum chunk sayısı
 Chunk Size ve Overlap Optimizasyonu
