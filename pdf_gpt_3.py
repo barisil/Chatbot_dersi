@@ -26,10 +26,10 @@ if not api_key:
 BASE_DIR = Path(__file__).resolve().parent
 DATA_FOLDER = str(BASE_DIR / "data")
 PERSIST_DIR = str(BASE_DIR / "chroma_db")
-"""
-Chatbotun en önemli kısımlarından bir tanesi. İdeal değerler değişebiliyor ama 
-benim dokümanlardaki text ler için genelde 500-800 arası chunk size ve %20 overlap iyi sonuç veriyor.
-"""
+
+#Chatbotun en önemli kısımlarından bir tanesi. İdeal değerler değişebiliyor ama 
+#benim dokümanlardaki text ler için genelde 500-800 arası chunk size ve %20 overlap iyi sonuç veriyor.
+
 
 CHUNK_SIZE = 600
 CHUNK_OVERLAP = 120
@@ -268,6 +268,11 @@ CEVAP KURALLARI:
 4. Karşılaştırma isteniyorsa: Kısa tablo veya liste kullan
 5. "Bağlama göre...", "Kaynaklara göre..." gibi girişler kullanma
 6. Kavram uyumsuzluğu varsa: "Bu bilgi dokümanlarda bulunmamaktadır."
+7. **KRİTİK**: "Hangi yıl", "en fazla", "en az" sorularında:
+   - SADECE bağlamda verilen yılları karşılaştır
+   - Bağlamda olmayan yıl veya veri ASLA ekleme
+   - Tüm yılların verisi yoksa: "Mevcut verilere göre [yıl] yılında [değer], ancak tüm yılların verisi bulunmamaktadır."
+
 
 YASAKLAR:
 ❌ "Tabii ki", "Elbette", "Maalesef" gibi dolgu kelimeler
@@ -278,6 +283,10 @@ YASAKLAR:
 Örnek İyi Cevap:
 Soru: "2020'de genç işsizlik oranı nedir?"
 Cevap: "2020 yılında genç işsizlik oranı %25,9'dur."
+Örnek İyi Cevap (Karşılaştırma):
+Soru: "Hangi yılda genç işsizlik en yüksekti?"
+Cevap: "Mevcut verilere göre 2018 yılında genç işsizlik oranı %20,3 ile en yüksek seviyededir."
+
 
 CEVAP (sadece cevap, başka hiçbir şey yazma):"""
     prompt = ChatPromptTemplate.from_template(template)
@@ -297,10 +306,10 @@ if st.session_state.vector_store and st.session_state.retriever is None:
 
 # ============================================
 # ANA UYGULAMA
-"""
-Bu bölümde chatbotun ana akışı var. Eğer vektör veritabanı hazırsa sohbet açılıyor. 
-Her kullanıcı sorusu için önce akıllı retrieval yapılıyor, ardından kavram uyumsuzluğu kontrol ediliyor. 
-Güvenliyse cevap üretiliyor; değilse ‘bilgi yok’ deniyor. Aynı anda tüm soru cevap context verisi RAGAS değerlendirmesi için loglanıyor."""
+
+#Bu bölümde chatbotun ana akışı var. Eğer vektör veritabanı hazırsa sohbet açılıyor. 
+#Her kullanıcı sorusu için önce akıllı retrieval yapılıyor, ardından kavram uyumsuzluğu kontrol ediliyor. 
+#Güvenliyse cevap üretiliyor; değilse ‘bilgi yok’ deniyor. Aynı anda tüm soru cevap context verisi RAGAS değerlendirmesi için loglanıyor."""
 
 st.title("📊 Türkiye Gençlik, Aile ve Yaşlı İstatistikleri Chatbot")
 st.caption("OpenAI GPT + RAGAS ile performans değerlendirmeli versiyon")
